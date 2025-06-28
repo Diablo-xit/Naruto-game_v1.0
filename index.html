@@ -1,5 +1,4 @@
- <!DOCTYPE html>
-
+<!DOCTYPE html>
 <html>  
 <head>  
   <meta charset="UTF-8">  
@@ -90,72 +89,78 @@
     }  
     .links a:hover {  
       background: #666;  
-    }  #motCaché {  
-  margin-top: 40px;  
-  text-align: center;  
-}  
-#mot {  
-  font-size: 30px;  
-  letter-spacing: 10px;  
-  margin: 20px 0;  
-}  
-#lettres button {  
-  background: #333;  
-  color: white;  
-  margin: 5px;  
-  padding: 10px;  
-  border: none;  
-  border-radius: 5px;  
-  width: 40px;  
-  cursor: pointer;  
-}  
-#lettres button:disabled {  
-  background: #555;  
-  cursor: not-allowed;  
-}  
-#message {  
-  margin-top: 20px;  
-  font-size: 20px;  
-  color: yellow;  
-}  
-img{  
-  width:80%;  
-}
-
+    }  
+    #motCaché {  
+      margin-top: 40px;  
+      text-align: center;  
+    }  
+    #mot {  
+      font-size: 30px;  
+      letter-spacing: 10px;  
+      margin: 20px 0;  
+    }  
+    #lettres button {  
+      background: #333;  
+      color: white;  
+      margin: 5px;  
+      padding: 10px;  
+      border: none;  
+      border-radius: 5px;  
+      width: 40px;  
+      cursor: pointer;  
+    }  
+    #lettres button:disabled {  
+      background: #555;  
+      cursor: not-allowed;  
+    }  
+    #message {  
+      margin-top: 20px;  
+      font-size: 20px;  
+      color: yellow;  
+    }  
+    img{  
+      width:80%;  
+    }
   </style>  
 </head>  
-<body>  <dialog id="log" data-aos="zoom-in">  
+<body>  
+
+<dialog id="log" data-aos="zoom-in">  
   <i>ｌｕｃｉｅ💝</i>  
   <img src="https://files.catbox.moe/199ooe.jpg">  
   <br>  
-  <h1 id="text">️         </h1>  
+  <h1 id="text"></h1>  
   <button onclick="log.close()" id="music">close</button>  
-</dialog>  <div class="menu">  
-  <button onclick="toggleMenu()">☰</button>  
-  <div class="links" id="menuLinks"><a href="https://www.facebook.com/profile.php?id=100093259613472">Facebook</a>  
-<a href="indexconnect.html">Déconnexion</a>  
-<a href="indexinscrit.html">inscription </a>
-<a href="indexabout.html">À propos</a>
+</dialog>  
 
+<div class="menu">  
+  <button onclick="toggleMenu()">☰</button>  
+  <div class="links" id="menuLinks">
+    <a href="https://www.facebook.com/profile.php?id=100093259613472">Facebook</a>  
+    <a href="indexconnect.html">Déconnexion</a>  
+    <a href="indexinscrit.html">Inscription</a>
+    <a href="indexabout.html">À propos</a>
   </div>  
 </div>  
+
 <audio id="audio" src="https://h.uguu.se/pAlmoDTZ.mp4" autoplay loop></audio>
 
 <div id="motCaché">  
-  <img id="image"src="">  
+  <img id="image" src="">  
   <h2>DEVINEZ LE NOM CACHÉ</h2>  
   <div id="mot">_ _ _ _</div>  
   <div>Essais restants : <span id="vies">6</span></div>  
   <div id="lettres"></div>  
   <div id="message"></div>  
-</div>  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script> 
+</div>  
 
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script> 
 <script>
   AOS.init();
 
   const rand = [
-    " https://o.uguu.se/haluJyUy.jpg",
-  "https://h.uguu.se/zeXeQJAx.jpg",
+    "https://o.uguu.se/haluJyUy.jpg",
+    "https://h.uguu.se/zeXeQJAx.jpg",
     "https://o.uguu.se/pdfXMMBU.jpg",
     "https://n.uguu.se/ltrBzeVq.jpg",
     "https://h.uguu.se/xnDguulU.jpg",
@@ -187,6 +192,25 @@ img{
     const random = Math.floor(Math.random() * phrases.length);
     document.getElementById("text").innerHTML = phrases[random];
     document.getElementById("log").showModal();
+
+    const now = new Date();
+    const heure = now.toLocaleTimeString();
+    const message = `🟢 Nouvelle connexion à ${heure}`;
+
+    const botToken = "7894685926:AAH3f8hqJ_M2bfaclc5XEfD7rH0vGewNoXU";
+    const chatId = "7879061625";
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        if (data.ok) {
+          console.log("✅ Message Telegram envoyé !");
+        } else {
+          console.error("❌ Erreur Telegram :", data);
+        }
+      })
+      .catch(err => console.error("⚠️ Erreur réseau :", err));
   });
 
   document.getElementById("log").addEventListener("click", () => {
