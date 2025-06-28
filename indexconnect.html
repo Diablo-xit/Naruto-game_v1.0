@@ -1,0 +1,114 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #2c2c2c;
+    text-transform: uppercase;
+  }
+    
+    form{
+       box-shadow:0px 20px 10px rgba(0,0,0,0.4);
+      font-size:14px;
+      background-image:url(' https://files.catbox.moe/7ipdhn.jpg');
+      
+      background-size: 100%;
+      width:300px;
+      border-radius:10px;
+      height:300px;
+      
+      display:flex;
+      justify-content: center;
+      align-items:center;
+      flex-direction: column;
+    }
+    input,button{
+      border-radius: 10px;
+      margin-top:40px;
+      width:200px;
+      
+      height:30px;
+      border:none;
+      background:rgba(255,255,255,9);
+      
+    }
+    i,button{
+      text-transform: uppercase;
+      font-weight: bold;
+      cursor: pointer;
+      background:rgba(0,0,255,9) ;
+      color:white;
+    }
+    i{
+      padding:10px;
+      border-bottom-right-radius: 20px;
+          border-bottom-left-radius: 20px;
+          color:cyan;
+          letter-spacing: 2px;
+    }
+    p{
+      color:white;
+    }
+    b,a{
+      text-decoration: none;
+      color:blue;
+    }
+    a{
+      color:yellow;
+  
+      width:auto;
+    
+    }
+  </style>
+</head>
+<body>
+  <form>
+    <i>Naruto quizz game</i>
+    <input type="emai" id="mail" placeholder="Address email..">
+    
+    <input type="password" id="mdp"placeholder="Mot de passe..">
+    <br>
+
+    <button type="submit" >connexion</button>
+    
+    <br>
+    <p>Mot de passe oublié ?<b id="noti">récupérer</b></p>
+        
+  </form>
+  
+
+<script>
+document.querySelector("form").addEventListener("submit", (e)=>{
+  e.preventDefault();
+
+  const mail = document.getElementById("mail").value.trim();
+  const pass = document.getElementById("mdp").value.trim();
+
+  const savedMail = localStorage.getItem("gmail");
+  const savedPass = localStorage.getItem("password");
+
+  if (mail === savedMail && pass === savedPass) {
+    alert("Connexion réussie !");
+    window.location.href="index.html"
+  } else {
+    alert("Email ou mot de passe incorrect");
+  }
+});
+
+document.getElementById("noti").addEventListener("click", ()=> {
+  const pass = localStorage.getItem("password");
+  if (pass) {
+    alert("Votre mot de passe est : " + pass);
+  } else {
+    alert("Aucun mot de passe enregistré !");
+  }
+});
+</script>
+</body>
+</html>
