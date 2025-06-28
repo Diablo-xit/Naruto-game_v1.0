@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Inscription Naruto</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #2c2c2c;
+      text-transform: uppercase;
+      height: 100vh;
+      margin: 0;
+    }
+    form {
+      box-shadow: 0px 20px 10px rgba(0,0,0,0.4);
+      font-size: 14px;
+      background-image: url('https://files.catbox.moe/7ipdhn.jpg');
+      background-size: 100%;
+      width: 300px;
+      border-radius: 10px;
+      height: auto;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    input, button {
+      border-radius: 10px;
+      margin-top: 20px;
+      width: 200px;
+      height: 30px;
+      border: none;
+      background: rgba(255,255,255,0.9);
+    }
+    i, button {
+      text-transform: uppercase;
+      font-weight: bold;
+      cursor: pointer;
+      background: rgba(0,0,255,0.9);
+      color: white;
+    }
+    i {
+      padding: 10px;
+      border-bottom-right-radius: 20px;
+      border-bottom-left-radius: 20px;
+      color: cyan;
+      letter-spacing: 2px;
+    }
+    p {
+      color: white;
+      font-size: 12px;
+      margin-top: 10px;
+      text-align: center;
+    }
+    a {
+      text-decoration: none;
+      color: yellow;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="formInscription">
+    <i>Inscription Naruto</i>
+    <input type="email" id="mail" placeholder="Adresse email..">
+    <input type="password" id="mdp" placeholder="Mot de passe..">
+    <input type="password" id="confirm" placeholder="Confirmer mot de passe..">
+    <button type="submit">S'inscrire</button>
+    <p id="message"></p>
+    <p>Vous avez déjà un compte ? <a href="indexconnect.html">Se connecter</a></p>
+  </form>
+
+  <script>
+    document.getElementById("formInscription").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const mail = document.getElementById("mail").value.trim();
+      const pass = document.getElementById("mdp").value.trim();
+      const confirm = document.getElementById("confirm").value.trim();
+      const message = document.getElementById("message");
+
+      if (mail === "" || pass === "" || confirm === "") {
+        message.textContent = "Tous les champs sont requis";
+        return;
+      }
+
+      if (pass !== confirm) {
+        message.textContent = "Les mots de passe ne correspondent pas";
+        return;
+      }
+
+      localStorage.setItem("gmail", mail);
+      localStorage.setItem("password", pass);
+      message.textContent = "Inscription réussie 🎉";
+      window.location.href="index.html"
+    });
+  </script>
+
+</body>
+</html>

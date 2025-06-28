@@ -1,0 +1,276 @@
+ <!DOCTYPE html>
+
+<html>  
+<head>  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1">  
+  <title>NARUTO Shippuden Game</title>  
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">  
+  <style>  
+    body {  
+      background: #1e1e1e;  
+      color: white;  
+      font-family: Arial, sans-serif;  
+      text-transform: uppercase;  
+      padding: 20px;  
+    }  
+    dialog {  
+      background: rgba(255,255,255,1);  
+      width: 70%;  
+      text-align: center;  
+      height: 400px;  
+      border-radius: 10px;  
+      padding: 20px;  
+      font-weight: bold;  
+      border: none;  
+      box-shadow: 0px 10px 10px rgba(0,0,0,0.4);  
+    }  
+    button {  
+      width: 100px;  
+      background: #2c2c2c;  
+      cursor: pointer;  
+      border: none;  
+      height: 30px;  
+      color: white;  
+      border-radius: 5px;  
+      font-weight: bold;  
+      letter-spacing: 2px;  
+    }  
+    img {  
+      border-radius: 10px;  
+      object-fit: cover;  
+      width: 100%;  
+      height: 300px;  
+    }  
+    h1 {  
+      font-family: monospace;  
+      color: Violet;  
+      overflow: hidden;  
+      white-space: nowrap;  
+      animation: typing 2s steps(20) infinite alternate-reverse;  
+      width:30ch;  
+    }  
+    @keyframes typing {  
+      from { width: 0ch; }  
+    }  
+    i {  
+      font-weight: bold;  
+      letter-spacing: 3px;  
+      font-size: 20px;  
+      position: absolute;  
+      text-shadow: 2px 2px 2px red;  
+      color: blue;  
+    }  
+    .menu {  
+      width: 100px;  
+      background: #333;  
+      color: white;  
+      border-radius: 5px;  
+    }  
+    .menu button {  
+      background: #444;  
+      color: white;  
+      border: none;  
+      width: 100%;  
+      font-size: 20px;  
+      height: 50px;  
+      padding: 10px;  
+      text-align: left;  
+      cursor: pointer;  
+    }  
+    .links {  
+      display: none;  
+      flex-direction: column;  
+    }  
+    .links a {  
+      padding: 10px;  
+      color: white;  
+      text-decoration: none;  
+      background: #555;  
+    }  
+    .links a:hover {  
+      background: #666;  
+    }  #motCaché {  
+  margin-top: 40px;  
+  text-align: center;  
+}  
+#mot {  
+  font-size: 30px;  
+  letter-spacing: 10px;  
+  margin: 20px 0;  
+}  
+#lettres button {  
+  background: #333;  
+  color: white;  
+  margin: 5px;  
+  padding: 10px;  
+  border: none;  
+  border-radius: 5px;  
+  width: 40px;  
+  cursor: pointer;  
+}  
+#lettres button:disabled {  
+  background: #555;  
+  cursor: not-allowed;  
+}  
+#message {  
+  margin-top: 20px;  
+  font-size: 20px;  
+  color: yellow;  
+}  
+img{  
+  width:80%;  
+}
+
+  </style>  
+</head>  
+<body>  <dialog id="log" data-aos="zoom-in">  
+  <i>ｌｕｃｉｅ💝</i>  
+  <img src="https://files.catbox.moe/199ooe.jpg">  
+  <br>  
+  <h1 id="text">️         </h1>  
+  <button onclick="log.close()" id="music">close</button>  
+</dialog>  <div class="menu">  
+  <button onclick="toggleMenu()">☰</button>  
+  <div class="links" id="menuLinks"><a href="https://www.facebook.com/profile.php?id=100093259613472">Facebook</a>  
+<a href="indexconnect.html">Déconnexion</a>  
+<a href="indexabout.html">À propos</a>
+
+  </div>  
+</div>  
+<audio id="audio" src="https://h.uguu.se/pAlmoDTZ.mp4" autoplay loop></audio>
+
+<div id="motCaché">  
+  <img id="image"src="">  
+  <h2>DEVINEZ LE NOM CACHÉ</h2>  
+  <div id="mot">_ _ _ _</div>  
+  <div>Essais restants : <span id="vies">6</span></div>  
+  <div id="lettres"></div>  
+  <div id="message"></div>  
+</div>  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script> 
+
+<script>
+  AOS.init();
+
+  const rand = [
+    " https://o.uguu.se/haluJyUy.jpg",
+  "https://h.uguu.se/zeXeQJAx.jpg",
+    "https://o.uguu.se/pdfXMMBU.jpg",
+    "https://n.uguu.se/ltrBzeVq.jpg",
+    "https://h.uguu.se/xnDguulU.jpg",
+    "https://h.uguu.se/HDmfdMgx.jpg",
+    "https://h.uguu.se/ekZbcLVa.jpg",
+    "https://n.uguu.se/vYllXTwV.jpg",
+    "https://d.uguu.se/gAsYiNdT.jpg",
+    "https://d.uguu.se/GYJaAqdw.jpg",
+    "https://n.uguu.se/EpxeQDTC.jpg",
+    "https://h.uguu.se/nFZSEogE.jpg"
+  ];
+
+  const img = document.getElementById("image");
+
+  function changerImage() {
+    const nouveau = Math.floor(Math.random() * rand.length);
+    img.src = rand[nouveau];
+  }
+
+  setInterval(changerImage, 2000);
+
+  window.addEventListener("load", () => {
+    const phrases = [
+      "ravie de te revoir ici 🖤",
+      "salut votre Altesse 💝",
+      "quoi de neuf aujourd’hui ? 😚",
+      "c'est parti pour les devinettes😇"
+    ];
+    const random = Math.floor(Math.random() * phrases.length);
+    document.getElementById("text").innerHTML = phrases[random];
+    document.getElementById("log").showModal();
+  });
+
+  document.getElementById("log").addEventListener("click", () => {
+    document.getElementById("audio").play();
+  });
+
+  function toggleMenu() {
+    const menu = document.getElementById("menuLinks");
+    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+  }
+
+  const personnages = [
+    "NARUTO", "SASUKE", "SAKURA", "KAKASHI", "ITACHI",
+    "GAARA", "NEJI", "SHIKAMARU", "TSUNADE", "OROCHIMARU",
+    "MADARA", "OBITO", "JIRAIYA", "MINATO", "KURAMA"
+  ];
+
+  let motSecret, motAffiche, vies, lettresUtilisées;
+
+  const motDiv = document.getElementById("mot");
+  const viesSpan = document.getElementById("vies");
+  const messageDiv = document.getElementById("message");
+  const lettresDiv = document.getElementById("lettres");
+
+  function lancerJeu() {
+    motSecret = personnages[Math.floor(Math.random() * personnages.length)];
+    motAffiche = Array(motSecret.length).fill("_");
+    vies = 6;
+    lettresUtilisées = [];
+    motDiv.textContent = "";
+    messageDiv.textContent = "";
+    viesSpan.textContent = vies;
+    lettresDiv.innerHTML = "";
+    afficherMot();
+    creerClavier();
+  }
+
+  function afficherMot() {
+    motDiv.textContent = motAffiche.join(" ");
+  }
+
+  function creerClavier() {
+    for (let i = 65; i <= 90; i++) {
+      const lettre = String.fromCharCode(i);
+      const btn = document.createElement("button");
+      btn.textContent = lettre;
+      btn.id = "btn-" + lettre;
+      btn.onclick = () => verifierLettre(lettre);
+      lettresDiv.appendChild(btn);
+    }
+  }
+
+  function verifierLettre(lettre) {
+    if (lettresUtilisées.includes(lettre)) return;
+    lettresUtilisées.push(lettre);
+    document.getElementById("btn-" + lettre).disabled = true;
+
+    if (motSecret.includes(lettre)) {
+      for (let i = 0; i < motSecret.length; i++) {
+        if (motSecret[i] === lettre) {
+          motAffiche[i] = lettre;
+        }
+      }
+      afficherMot();
+      if (!motAffiche.includes("_")) {
+        messageDiv.textContent = "Bravo 👑 ! Vous avez gagné 🎉";
+        désactiverToutesLesLettres();
+      }
+    } else {
+      vies--;
+      viesSpan.textContent = vies;
+      if (vies === 0) {
+        messageDiv.textContent = "Perdu ! Le mot était : " + motSecret;
+        désactiverToutesLesLettres();
+        setTimeout(lancerJeu, 3000);
+      }
+    }
+  }
+
+  function désactiverToutesLesLettres() {
+    const boutons = document.querySelectorAll("#lettres button");
+    boutons.forEach(btn => btn.disabled = true);
+  }
+
+  lancerJeu();
+</script>
+</body>  
+</html>
